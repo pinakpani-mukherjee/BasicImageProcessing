@@ -6,6 +6,8 @@
 #include <stdint.h>
 #include <cstdio>
 
+#define BYTE_BOUND(value) value < 0 ? 0 : (value > 255 ? 255 : value)
+
 Image::Image(const char *filename)
 {
     if (read(filename))
@@ -88,6 +90,24 @@ ImageType Image::getFileType(const char *filename)
         }
     }
     return PNG;
+}
+
+Image &Image::diffmap(Image &img)
+{
+    int compare_width = fmin(w, img.w);
+    int compare_height = fmin(h, img.h);
+    int compare_channels = fmin(channels, img.channels);
+    for (uint32_t i = 0; i < compare_height; ++i)
+    {
+        for (uint32_t j = 0; j < compare_width; ++j)
+        {
+            for (uint8_t k = 0; k < compare_channels; ++k)
+            {
+                data[(i * w + j) * channels + k] = BYTE_BOUND(abs(data[(i * w + j) * channels + k] - img.data[(i * img.w + j) * img.channels + k]));
+            }
+        }
+    }
+    return *this;
 }
 
 Image &Image::grayscale_avg()
