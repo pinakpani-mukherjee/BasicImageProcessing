@@ -11,7 +11,7 @@ enum ImageType
 
 struct Image
 {
-    u_int8_t *data = NULL;
+    uint8_t *data = NULL;
     size_t size = 0;
     int w;
     int h;
