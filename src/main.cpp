@@ -36,15 +36,15 @@ int main(int argc, const char *argv[])
         1 / 16.0,
     };
 
-    // test2.std_convolve_clamp_to_0(0, 3, 3, gauss_ker, 1, 1);
-    // test2.std_convolve_clamp_to_0(1, 3, 3, gauss_ker, 1, 1);
-    // test2.std_convolve_clamp_to_0(2, 3, 3, gauss_ker, 1, 1);
-    // test2.write("./assets/output_images/photo_gauss_blurred.png");
+    test2.std_convolve_clamp_to_border(0, 3, 3, gauss_ker, 1, 1);
+    test2.std_convolve_clamp_to_border(1, 3, 3, gauss_ker, 1, 1);
+    test2.std_convolve_clamp_to_border(2, 3, 3, gauss_ker, 1, 1);
+    test2.write("./assets/output_images/photo_gauss_blurred_clamped_to_broder.png");
 
-    test2.std_convolve_clamp_to_0(0, 3, 3, emboss_ker, 1, 1);
-    test2.std_convolve_clamp_to_0(1, 3, 3, emboss_ker, 1, 1);
-    test2.std_convolve_clamp_to_0(2, 3, 3, emboss_ker, 1, 1);
-    test2.write("./assets/output_images/photo_embossed.png");
+    // test2.std_convolve_clamp_to_border(0, 3, 3, emboss_ker, 1, 1);
+    // test2.std_convolve_clamp_to_border(1, 3, 3, emboss_ker, 1, 1);
+    // test2.std_convolve_clamp_to_border(2, 3, 3, emboss_ker, 1, 1);
+    // test2.write("./assets/output_images/photo_embossed_clamed_to_border.png");
 
     return 0;
 }
