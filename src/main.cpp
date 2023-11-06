@@ -12,7 +12,7 @@ int main(int argc, const char *argv[])
     // test.write("./assets/output_images/photo_colormasked.png");
 
     Image diff = test1;
-    diff.diffmap(test2);
-    diff.write("./assets/output_images/photo_diffmap.png");
+    diff.diffmap_scale(test2, 25);
+    diff.write("./assets/output_images/photo_diffmap_scaled.png");
     return 0;
 }
