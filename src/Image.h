@@ -40,4 +40,7 @@ struct Image
     Image &grayscale_lum();
 
     Image &colorMask(float r, float g, float b);
+
+    Image &flipX();
+    Image &flipY();
 };

@@ -308,3 +308,43 @@ Image &Image::colorMask(float r, float g, float b)
     }
     return *this;
 }
+
+Image &Image::flipX()
+{
+    uint8_t temp[4];
+    uint8_t *px1;
+    uint8_t *px2;
+    for (int y = 0; y < h; y++)
+    {
+        for (int x = 0; x < w / 2; x++)
+        {
+            px1 = &data[(x + y * w) * channels];
+            px2 = &data[((w - 1 - x) + y * w) * channels];
+
+            memcpy(temp, px1, channels);
+            memcpy(px1, px2, channels);
+            memcpy(px2, temp, channels);
+        }
+    }
+    return *this;
+}
+
+Image &Image::flipY()
+{
+    uint8_t temp[4];
+    uint8_t *px1;
+    uint8_t *px2;
+    for (int x = 0; x < w; x++)
+    {
+        for (int y = 0; y < h / 2; y++)
+        {
+            px1 = &data[(x + y * w) * channels];
+            px2 = &data[(x + (h - 1 - y) * w) * channels];
+
+            memcpy(temp, px1, channels);
+            memcpy(px1, px2, channels);
+            memcpy(px2, temp, channels);
+        }
+    }
+    return *this;
+}
